@@ -79,7 +79,8 @@ function displayMosaic() {
         'opacity': '.6'
     });
     $('#content').show('slow');
-    setInterval(moveLine, app.config.timerMove);
+    if (app.interval.move == null)
+        app.interval.move = setInterval(moveLine, app.config.timerMove);
 };
 function moveLine() {
     var randomLine = Math.floor((Math.random() * app.config.line) + 1);
