@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MosaicIT</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <link rel="shortcut icon" href="../app/img/favicon.ico" />
+    <link href='http://fonts.googleapis.com/css?family=Rum+Raisin' rel='stylesheet' type='text/css'>
+    <script src="https://www.google.com/jsapi"></script>
+    <link rel="stylesheet" type="text/css" href="style/spinner.css">
+    <link rel="stylesheet" type="text/css" href="style/app.css">
+</head>
+<body>
+    <div class="container">
+        <div id="content">
+
+        </div>
+        <div class="spinner"></div>
+        <div class="opt" onclick="displayPanel()"></div>
+        <div class="panel">
+            <h2>Options</h2>
+            <label for="tag">Tag</label>
+            <input id="tag" value=""/>
+            <div class="grp-btn">
+                <button class="btn btn-ok" onclick="updateOptions()">OK</button>
+                <button class="btn btn-cancel" onclick="hidePanel()">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <script src="vendor/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script src="vendor/underscore-min.js" type="text/javascript"></script>
+    <script src="app.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        google.load('search', '1');
+    </script>
+</body>
+</html>
