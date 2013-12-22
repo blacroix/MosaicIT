@@ -1,0 +1,4 @@
+MosaicIT
+========
+
+Mosaic of images
