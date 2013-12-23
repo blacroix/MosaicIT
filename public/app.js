@@ -5,8 +5,8 @@ var app = {
         queries: ['shopping', 'mode', 'perfume'],
         line: 1,
         imgHeight: 100,
-        timerMove: 1000,
-        imgPerLine: $(window).width() * 14 / 1440,
+        timerMove: 600,
+        imgPerLine: $(window).width() * 14 / 1440
     },
     interval: {}
 };
@@ -83,13 +83,13 @@ function displayMosaic() {
         app.interval.move = setInterval(moveLine, app.config.timerMove);
 };
 function moveLine() {
-    var randomLine = Math.floor((Math.random() * app.config.line) + 1);
-    if (randomLine < 2) randomLine++;
+    var randomLine = (Math.floor((Math.random() * app.config.line) + 1)) % (Math.floor($(window).height() / app.config.imgHeight) + 2);
+    console.log(randomLine);
     var lineDOM = $('div:eq(' + randomLine + ')');
     var img = lineDOM.children()[app.config.imgPerLine];
     $(img).css("margin-left", "-500px");
     lineDOM.prepend(img);
-    $(img).animate({marginLeft: "+=500"}, app.config.timerMove - 300);
+    $(img).animate({marginLeft: "+=500"}, 1000);
 };
 function displayPanel() {
     $('.opt').css("opacity", "0");
