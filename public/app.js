@@ -6,7 +6,7 @@ var app = {
         line: 1,
         imgHeight: 100,
         timerMove: 600,
-        imgPerLine: Math.floor($(window).width() * 14 / 1440)
+        imgPerLine: Math.floor($(window).width() * 16 / 1440)
     },
     interval: {}
 };
@@ -84,7 +84,6 @@ function displayMosaic() {
 };
 function moveLine() {
     var randomLine = (Math.floor((Math.random() * app.config.line) + 1)) % (Math.floor($(window).height() / app.config.imgHeight) + 2);
-    console.log(randomLine);
     var lineDOM = $('div:eq(' + randomLine + ')');
     var img = lineDOM.children()[app.config.imgPerLine];
     $(img).css("margin-left", "-500px");
@@ -111,10 +110,16 @@ function hidePanel() {
     });
 };
 function updateOptions() {
-    app.config.queries = $('#tag').val().split(',');
+    var queriesDOM = $('#tag');
+    var queries = queriesDOM.val();
+    if (queries.indexOf(',') < 0)
+        app.config.queries = [ queries ];
+    else
+        app.config.queries = queriesDOM.val().split(',');
     hidePanel();
     app.googleImgSearch = [];
     app.config.line = 1;
+    app.imgUrls = [];
     $('#content').html('').hide();
     $('.spinner').show();
     googleGetImages();
