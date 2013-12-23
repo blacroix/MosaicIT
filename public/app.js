@@ -6,7 +6,7 @@ var app = {
         line: 1,
         imgHeight: 100,
         timerMove: 600,
-        imgPerLine: $(window).width() * 14 / 1440
+        imgPerLine: Math.floor($(window).width() * 14 / 1440)
     },
     interval: {}
 };
