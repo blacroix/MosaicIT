@@ -14,6 +14,13 @@ function setOptions() {
     $('#tag').val(app.config.queries.join());
 };
 $(document).ready(function () {
+    var q = $.url().param('q');
+    if (q) {
+        if (q.indexOf(',') < 0)
+            app.config.queries = [ q ];
+        else
+            app.config.queries = q.split(',');
+    }
     google.setOnLoadCallback(googleGetImages);
     setOptions();
     waitLoading();
